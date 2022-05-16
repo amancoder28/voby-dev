@@ -1,0 +1,23 @@
+{
+  "name": "voby-website",
+  "version": "0.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview --port 5000"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.6.4",
+    "vite": "^2.9.7",
+    "voby-vite": "^1.0.0",
+    "unocss": "^0.32.13"
+  },
+  "dependencies": {
+    "voby": "*"
+  },
+  "private": true
+}
