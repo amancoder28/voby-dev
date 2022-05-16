@@ -13,5 +13,5 @@ code {
 }
 
 .flex-center {
-  @apply flex text-center mt-[30vh];
+  @apply flex text-center pt-[30vh];
 }
