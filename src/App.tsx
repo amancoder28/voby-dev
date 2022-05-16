@@ -6,7 +6,7 @@ function App(): JSX.Element {
   const increment = () => count((value) => value + 1);
 
   return (
-    <main class="bg-[#fff6db] text-[#2f2f2f] w-full min-h-[100vh] flex-col text-center">
+    <main class="bg-[#fff6db] text-[#2f2f2f] w-full min-h-[100vh] flex-col flex-center">
       <img src={banner} class="h-[60vmin] pointer-events-none" alt="logo" />
       <div class="mt-4 space-y-4">
         <section>
