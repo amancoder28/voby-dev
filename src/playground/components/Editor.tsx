@@ -63,7 +63,7 @@ export const Editor = () => {
           <MonacoEditor />
         </div>
       </div>
-      <div class="w-2 bg-gray" onMouseDown={startResizing} />
+      <div class="w-2 bg-gray cursor-col-resize" onMouseDown={startResizing} />
     </>
   );
 };
