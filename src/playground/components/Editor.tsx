@@ -1,4 +1,4 @@
-import { editor } from "monaco-editor";
+import { editor, Uri } from "monaco-editor";
 import { $, For, If } from "voby";
 import { activeTab, editorData, resizing } from "../state";
 import { MonacoEditor } from "./MonacoEditor";
@@ -22,9 +22,9 @@ export const Editor = () => {
       ...data,
       {
         id: (id = data.length),
-        name: `tab-${data.length}`,
+        name: `tab-${id}`,
         fileType: "tsx",
-        model: editor.createModel("\n", "typescript"),
+        model: editor.createModel("\n", "typescript", Uri.file(`tab-${id}.tsx`)),
       },
     ]);
     activeTab(id!);
