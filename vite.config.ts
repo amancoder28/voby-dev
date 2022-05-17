@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import voby from "voby-vite";
 import UnocssPlugin from "unocss/vite";
 import transformerDirectives from '@unocss/transformer-directives';
+import transformerVariantGroup from '@unocss/transformer-variant-group';
 import { presetMini } from "@unocss/preset-mini";
 
 export default defineConfig({
@@ -10,7 +11,8 @@ export default defineConfig({
     UnocssPlugin({
       presets: [presetMini()],
       transformers: [
-        transformerDirectives()
+        transformerDirectives(),
+        transformerVariantGroup()
       ]
     }),
   ],

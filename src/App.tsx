@@ -6,19 +6,19 @@ function App(): JSX.Element {
   const increment = () => count((value) => value + 1);
 
   return (
-    <main class="bg-[#fff6db] text-[#2f2f2f] w-full min-h-[100vh] flex-col flex-center">
+    <main class="bg-[#fff6db] text-[#2f2f2f] w-screen h-screen flex-col flex-center">
       <img src={banner} class="h-[60vmin] pointer-events-none" alt="logo" />
       <div class="mt-4 flex-center flex-col py-4">
-        <section class="">
+        <section class="mb-4">
           <button
-            class="py-2 px-4 rounded-lg shadow-lg text-center text-white text-lg font-normal bg-emerald-700 hover:focus:ring-4 hover:focus:ring-emerald-400 transition-all"
+            class="py-2 px-4 rounded-lg shadow-lg text-center text-white text-lg font-normal bg-emerald-700 hover:focus:(ring-4 ring-emerald-400) transition-all"
             style="border: none"
             onClick={increment}
           >
             count is: {count}
           </button>
         </section>
-        <p class="text-2xl mt-4">
+        <p class="text-2xl mt-4 mx-4">
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
         <section class="mt-4">
