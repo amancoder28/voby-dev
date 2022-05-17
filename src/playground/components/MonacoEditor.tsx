@@ -46,3 +46,5 @@ export const MonacoEditor = () => {
 
   return <div class="absolute w-100% h-100%" ref={editorEl} />;
 };
+
+export default MonacoEditor;
