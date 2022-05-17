@@ -1,3 +1,4 @@
+import { editor, languages } from "monaco-editor";
 // @ts-ignore
 import editorWorker from "monaco-editor/esm/vs/editor/editor.worker?worker";
 // @ts-ignore
@@ -13,18 +14,24 @@ import tsWorker from "monaco-editor/esm/vs/language/typescript/ts.worker?worker"
     }
   },
 };
+languages.typescript.typescriptDefaults.setCompilerOptions({
+  jsx: languages.typescript.JsxEmit.Preserve,
+});
 
 import { $, useEffect, useSample } from "voby";
-import { editor } from "monaco-editor";
 import { activeModel } from "../state";
 
 export const MonacoEditor = () => {
   const editorEl = $<HTMLElement>();
   let mEditor: editor.IStandaloneCodeEditor;
+  let resizeObserver: ResizeObserver;
 
   useEffect(() => {
     const el = editorEl();
-    if (!el || mEditor) return;
+    if (!el || mEditor) {
+      resizeObserver?.disconnect();
+      return;
+    }
 
     mEditor = editor.create(el, {
       model: useSample(activeModel),
@@ -33,10 +40,15 @@ export const MonacoEditor = () => {
       minimap: { enabled: false },
     });
 
-    new ResizeObserver(([entry]) => {
+    mEditor.onDidChangeModelContent(() => {
+      console.log(mEditor.getValue());
+    });
+
+    resizeObserver = new ResizeObserver(([entry]) => {
       const size = entry.contentBoxSize[0];
       if (size) mEditor.layout({ width: size.inlineSize, height: size.blockSize });
-    }).observe(el);
+    });
+    resizeObserver.observe(el);
   });
 
   useEffect(() => {
