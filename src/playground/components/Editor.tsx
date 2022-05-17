@@ -1,8 +1,7 @@
 import { editor } from "monaco-editor";
-import { $, For, If, lazy } from "voby";
+import { $, For, If } from "voby";
 import { activeTab, editorData, resizing } from "../state";
-
-const MonacoEditor = lazy(() => import("./MonacoEditor"));
+import { MonacoEditor } from "./MonacoEditor";
 
 export const Editor = () => {
   const editorWidth = $(50);
