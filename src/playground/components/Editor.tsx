@@ -46,10 +46,10 @@ export const Editor = () => {
   return (
     <>
       <div class="flex flex-col" style={() => `width:clamp(25%, ${editorWidth()}%, 75%)`}>
-        <div class="flex gap-2">
+        <div class="flex">
           <For values={editorData}>
             {(data) => (
-              <div class="flex gap-1" onClick={() => activeTab(data.id)}>
+              <div class="flex gap-1 p-2" onClick={() => activeTab(data.id)}>
                 {data.name}.{data.fileType}
                 <If when={data.id !== 0}>
                   <button onClick={() => deleteTab(data.id)}>×</button>
@@ -57,7 +57,9 @@ export const Editor = () => {
               </div>
             )}
           </For>
-          <button onClick={createNewTab}>+</button>
+          <button class="p-2" onClick={createNewTab}>
+            +
+          </button>
         </div>
         <div class="flex-1 relative">
           <MonacoEditor />
