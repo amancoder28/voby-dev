@@ -1,11 +1,12 @@
 /* @refresh reload */
-import { render } from "voby";
+import { render, lazy } from "voby";
 
 import "./styles/global.css";
 import "uno.css";
 import "@unocss/reset/tailwind.css";
 import App from "./App";
-import { Playground } from "./playground";
+
+const { Playground } = lazy (() => import('./playground'));
 
 let app = App;
 switch (location.pathname) {
