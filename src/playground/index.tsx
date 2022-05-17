@@ -9,3 +9,5 @@ export const Playground = () => {
     </div>
   );
 };
+
+export default Playground;
