@@ -1,5 +1,5 @@
 import { $, Switch } from "voby";
-import banner from "/banner.svg";
+import banner from "/voby-dev/banner.svg";
 
 function App(): JSX.Element {
   const route = $("/");
