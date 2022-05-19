@@ -5,7 +5,7 @@ body {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
     "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -16,5 +16,24 @@ code {
 }
 
 .flex-center {
-  @apply flex text-center pt-[15vh];
+  @apply flex items-center justify-center;
+}
+
+.spinner {
+  animation: animate-spin infinite 1.2s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@keyframes animate-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+footer {
+  @apply bottom-0 relative;
 }

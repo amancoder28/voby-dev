@@ -33,7 +33,7 @@ const Counter = () => {
 };
 
 render(<Counter />, document.body);
-`,
+      `,
       "typescript",
       Uri.file("index.tsx"),
     ),

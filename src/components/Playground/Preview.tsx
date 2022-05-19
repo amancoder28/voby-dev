@@ -1,5 +1,5 @@
 import { $, useSample } from "voby";
-import { resizing } from "../state";
+import { resizing } from "./state";
 
 const html = String.raw;
 const doc = html`<!DOCTYPE html>
@@ -24,7 +24,18 @@ export const Preview = () => {
 
   return (
     <div class="flex-1 flex flex-col">
-      <button onClick={() => (useSample(iframeEl)!.srcdoc = doc)}>reload</button>
+      <button
+        class="shadow-md z-20 h-[52px] mb-3"
+        onClick={() => (useSample(iframeEl)!.srcdoc = doc)}
+      >
+        <svg class="h-5 pl-3" viewBox="0 0 24 24" style="fill: none; stroke: currentcolor;">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+          ></path>
+        </svg>
+      </button>
       <iframe
         style={() => `pointer-events:${resizing() ? "none" : "all"}`}
         class="border-0 h-100%"

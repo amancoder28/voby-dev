@@ -1,6 +1,6 @@
 import { editor, Uri } from "monaco-editor";
 import { $, For, If } from "voby";
-import { activeTab, editorData, resizing } from "../state";
+import { activeTab, editorData, resizing } from "./state";
 import { MonacoEditor } from "./MonacoEditor";
 
 export const Editor = () => {
@@ -45,11 +45,11 @@ export const Editor = () => {
 
   return (
     <>
-      <div class="flex flex-col" style={() => `width:clamp(25%, ${editorWidth()}%, 75%)`}>
-        <div class="flex">
+      <div class="flex flex-col" style={() => `width: clamp(25%, ${editorWidth()}%, 75%)`}>
+        <div class="flex mx-3 shadow-md z-20">
           <For values={editorData}>
             {(data) => (
-              <div class="flex gap-1 p-2" onClick={() => activeTab(data.id)}>
+              <div class="flex gap-1 p-3" onClick={() => activeTab(data.id)}>
                 {data.name}.{data.fileType}
                 <If when={data.id !== 0}>
                   <button onClick={() => deleteTab(data.id)}>×</button>
@@ -65,7 +65,10 @@ export const Editor = () => {
           <MonacoEditor />
         </div>
       </div>
-      <div class="w-2 bg-gray cursor-col-resize" onMouseDown={startResizing} />
+      <div
+        class="w-2 bg-gray-300 hover:(bg-emerald-700) cursor-col-resize"
+        onMouseDown={startResizing}
+      />
     </>
   );
 };

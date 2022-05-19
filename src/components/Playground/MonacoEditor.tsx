@@ -3,6 +3,9 @@ import { editor, languages, Uri } from "monaco-editor";
 import editorWorker from "monaco-editor/esm/vs/editor/editor.worker?worker";
 // @ts-ignore
 import tsWorker from "monaco-editor/esm/vs/language/typescript/ts.worker?worker";
+
+// import vsLight from "./vs-light-plus.json";
+
 (window as any).MonacoEnvironment = {
   getWorker(_moduleId: unknown, label: string) {
     switch (label) {
@@ -14,13 +17,21 @@ import tsWorker from "monaco-editor/esm/vs/language/typescript/ts.worker?worker"
     }
   },
 };
-let vobyFiles = import.meta.globEager("/node_modules/voby/dist/**/*", { as: "raw" });
+
+let vobyFiles = import.meta.globEager("/node_modules/voby/dist/**/*", {
+  as: "raw",
+});
+
 Object.assign(vobyFiles, import.meta.globEager("/node_modules/voby/package.json", { as: "raw" }));
+
 Object.assign(vobyFiles, import.meta.globEager("/node_modules/oby/dist/**/*", { as: "raw" }));
+
 Object.assign(vobyFiles, import.meta.globEager("/node_modules/oby/package.json", { as: "raw" }));
+
 for (const path in vobyFiles) {
   editor.createModel(vobyFiles[path] as any as string, "typescript", Uri.parse(`file://${path}`));
 }
+
 languages.typescript.typescriptDefaults.setEagerModelSync(true);
 languages.typescript.typescriptDefaults.setCompilerOptions({
   strict: true,
@@ -33,7 +44,7 @@ languages.typescript.typescriptDefaults.setCompilerOptions({
 });
 
 import { $, useEffect, useSample } from "voby";
-import { activeModel } from "../state";
+import { activeModel } from "./state";
 
 export const MonacoEditor = () => {
   const editorEl = $<HTMLElement>();
@@ -47,11 +58,20 @@ export const MonacoEditor = () => {
       return;
     }
 
+    // editor.defineTheme("vs-light-plus", vsLight as editor.IStandaloneThemeData);
+    // editor.setTheme("vs-light-plus");
+
     mEditor = editor.create(el, {
+      lineDecorationsWidth: 5,
+      lineNumbersMinChars: 3,
       model: useSample(activeModel),
       language: "javascript",
-      theme: "vs-dark",
       minimap: { enabled: false },
+      theme: "vscode-light",
+      fontSize: 15,
+      fontWeight: "normal",
+      automaticLayout: true,
+      padding: { top: 15 },
     });
 
     mEditor.onDidChangeModelContent(() => {
@@ -60,14 +80,18 @@ export const MonacoEditor = () => {
 
     resizeObserver = new ResizeObserver(([entry]) => {
       const size = entry.contentBoxSize[0];
-      if (size) mEditor.layout({ width: size.inlineSize, height: size.blockSize });
+      if (size) {
+        mEditor.layout({ width: size.inlineSize, height: size.blockSize });
+      }
     });
     resizeObserver.observe(el);
   });
 
   useEffect(() => {
     const model = activeModel();
-    if (model && mEditor && mEditor.getModel() !== model) mEditor.setModel(model);
+    if (model && mEditor && mEditor.getModel() !== model) {
+      mEditor.setModel(model);
+    }
   });
 
   return <div class="absolute w-100% h-100%" ref={editorEl} />;

@@ -1,20 +1,9 @@
 /* @refresh reload */
-import { render, lazy } from "voby";
+import { render } from "voby";
 
 import "uno.css";
 import "@unocss/reset/tailwind.css";
 import "./styles/global.css";
+import SwitchRouter from "./router";
 
-import { default as _App } from "./App";
-import { LazyComponent } from "voby/dist/types";
-
-const Playground = lazy(() => import("./playground"));
-let App: JSX.Element | LazyComponent = _App;
-
-switch (location.pathname) {
-  case "/playground":
-    App = Playground;
-  default:
-}
-
-render(<App />, document.body);
+render(<SwitchRouter />, document.body);

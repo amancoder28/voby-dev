@@ -890,7 +890,7 @@ unocss@^0.32.13:
     "@unocss/transformer-variant-group" "0.32.13"
     "@unocss/vite" "0.32.13"
 
-vite@^2.9.7:
+vite@^2.9.9:
   version "2.9.9"
   resolved "https://registry.yarnpkg.com/vite/-/vite-2.9.9.tgz#8b558987db5e60fedec2f4b003b73164cb081c5e"
   integrity sha512-ffaam+NgHfbEmfw/Vuh6BHKKlI/XIAhxE5QSS7gFLIngxg171mg1P3a4LSRME0z2ZU1ScxoKzphkipcYwSD5Ew==
