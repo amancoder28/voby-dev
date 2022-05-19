@@ -1,9 +1,13 @@
+import Logo from "../Logo";
+
 export default function Footer() {
   return (
     <footer class="bottom-0 absolute w-screen p-4 bg-white shadow md:px-6 md:py-8">
       <div class="flex-center">
         <a href="https://github.com/vobyjs" class="flex items-center mb-4 sm:mb-0">
-          <img src="/logo.svg" class="mr-3 h-8" alt="Voby Logo" />
+          <div class="mr-3 h-8">
+            <Logo />
+          </div>
           <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             Voby
           </span>

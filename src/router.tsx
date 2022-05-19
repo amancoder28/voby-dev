@@ -12,7 +12,7 @@ export default function SwitchRouter() {
     <>
       <Header />
       <Switch when={route}>
-        <Switch.Case when={"/"}>
+        <Switch.Case when={"/voby-dev/"}>
           <Home />
         </Switch.Case>
         <Switch.Case when={"/about"}>
