@@ -11,6 +11,10 @@ const getHtml = (code: string) => {
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
+        <script
+          async
+          src="https://unpkg.com/es-module-shims@0.10.1/dist/es-module-shims.min.js"
+        ></script>
         <script type="importmap">
           {
             "imports": {
