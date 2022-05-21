@@ -1,32 +1,45 @@
 import { $, useSample } from "voby";
-import { resizing } from "./state";
+import { compiler, resizing } from "./shared";
 
 const html = String.raw;
-const doc = html`<!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Document</title>
-      <meta name="color-scheme" content="dark light" />
-      <script>
-        console.log(1);
-      </script>
-    </head>
-    <body>
-      Test
-    </body>
-  </html>`;
+
+const getHtml = (code: string) => {
+  return html`<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <meta name="color-scheme" content="dark light" />
+        <script type="importmap">
+          {
+            "imports": {
+              "voby": "https://cdn.skypack.dev/voby"
+            }
+          }
+        </script>
+        <script defer type="module">
+          ${code};
+        </script>
+      </head>
+      <body></body>
+    </html>`;
+};
 
 export const Preview = () => {
+  const doc = $("");
   const iframeEl = $<HTMLIFrameElement>();
+
+  compiler.onmessage = ({ data }: { data: { code: string } }) => {
+    if (data.code) doc(getHtml(data.code));
+  };
 
   return (
     <div class="flex-1 flex flex-col">
       <button
         class="shadow-md z-20 h-[52px] mb-3"
-        onClick={() => (useSample(iframeEl)!.srcdoc = doc)}
+        onClick={() => (useSample(iframeEl)!.srcdoc = useSample(doc))}
       >
         <svg class="h-5 pl-3" viewBox="0 0 24 24" style="fill: none; stroke: currentcolor;">
           <path

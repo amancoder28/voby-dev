@@ -48,3 +48,6 @@ export const activeModel = useComputed(() => {
 });
 
 export const resizing = $(false);
+
+import Worker from "../worker?worker";
+export const compiler = new Worker();

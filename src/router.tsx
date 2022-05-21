@@ -15,16 +15,16 @@ export default function SwitchRouter() {
         <Switch.Case when={"/voby-dev/"}>
           <Home />
         </Switch.Case>
-        <Switch.Case when={"/about"}>
+        <Switch.Case when={"/voby-dev/about"}>
           <PlaygroundPage />
         </Switch.Case>
-        <Switch.Case when={"/playground"}>
+        <Switch.Case when={"/voby-dev/playground"}>
           <Suspense fallback={<Spinner />}>
             <PlaygroundPage />
           </Suspense>
         </Switch.Case>
       </Switch>
-      <section class={() => `${route() !== "/playground" ? "visible" : "hidden"}`}>
+      <section class={() => `${route() !== "/voby-dev/playground" ? "visible" : "hidden"}`}>
         <Footer />
       </section>
     </>

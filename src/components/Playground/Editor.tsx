@@ -1,6 +1,6 @@
 import { editor, Uri } from "monaco-editor";
 import { $, For, If } from "voby";
-import { activeTab, editorData, resizing } from "./state";
+import { activeTab, editorData, resizing } from "./shared";
 import { MonacoEditor } from "./MonacoEditor";
 
 export const Editor = () => {

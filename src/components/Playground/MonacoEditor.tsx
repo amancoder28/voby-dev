@@ -44,7 +44,7 @@ languages.typescript.typescriptDefaults.setCompilerOptions({
 });
 
 import { $, useEffect, useSample } from "voby";
-import { activeModel } from "./state";
+import { activeModel, compiler, editorData } from "./shared";
 
 export const MonacoEditor = () => {
   const editorEl = $<HTMLElement>();
@@ -76,7 +76,20 @@ export const MonacoEditor = () => {
 
     mEditor.onDidChangeModelContent(() => {
       console.log(mEditor.getValue());
+      compiler.postMessage(
+        useSample(editorData).map((tab) => ({
+          file: `${tab.name}.${tab.fileType}`,
+          value: tab.model.getValue(),
+        })),
+      );
     });
+
+    compiler.postMessage(
+      useSample(editorData).map((tab) => ({
+        file: `${tab.name}.${tab.fileType}`,
+        value: tab.model.getValue(),
+      })),
+    );
 
     resizeObserver = new ResizeObserver(([entry]) => {
       const size = entry.contentBoxSize[0];
