@@ -9,17 +9,28 @@ export const Editor = () => {
 
   const startResizing = () => {
     resizing(true);
-    const onResize = ({ x, y }: MouseEvent) => {
+    const onResize = (event: MouseEvent | TouchEvent) => {
+      let x, y;
+      if (event.type === "touchmove") {
+        const changedTouch = (event as TouchEvent).changedTouches[0];
+        x = changedTouch.clientX;
+        y = changedTouch.clientY;
+      } else {
+        x = (event as MouseEvent).x;
+        y = (event as MouseEvent).y;
+      }
       editorSize(
         ((useSample(horizontal) ? x : y - useSample(playgroundTop)) / useSample(playgroundSize)) *
           100,
       );
     };
     window.addEventListener("mousemove", onResize);
-    window.addEventListener(
-      "mouseup",
-      () => (window.removeEventListener("mousemove", onResize), resizing(false)),
-    );
+    window.addEventListener("touchmove", onResize);
+    window.addEventListener("mouseup", () => {
+      window.removeEventListener("mousemove", onResize);
+      window.removeEventListener("touchmove", onResize);
+      resizing(false);
+    });
   };
 
   const createNewTab = () => {
@@ -91,6 +102,7 @@ export const Editor = () => {
           } bg-gray-300 hover:(bg-emerald-700)`
         }
         onMouseDown={startResizing}
+        onTouchStart={startResizing}
       />
     </>
   );
