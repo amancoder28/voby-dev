@@ -59,10 +59,19 @@ export const Editor = () => {
         <div class="flex px-3 shadow-md z-20">
           <For values={editorData}>
             {(data) => (
-              <div class="flex gap-1 p-3" onClick={() => activeTab(data.id)}>
+              <div
+                class={() =>
+                  `flex gap-1 p-2.5 border-y-2 border-y-transparent cursor-pointer ${
+                    activeTab() === data.id ? " border-b-emerald-700" : ""
+                  }`
+                }
+                onClick={() => activeTab(data.id)}
+              >
                 {data.name}.{data.fileType}
                 <If when={data.id !== 0}>
-                  <button onClick={() => deleteTab(data.id)}>×</button>
+                  <button onClick={(e) => (e.stopImmediatePropagation(), deleteTab(data.id))}>
+                    ×
+                  </button>
                 </If>
               </div>
             )}
