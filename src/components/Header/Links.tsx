@@ -1,5 +1,5 @@
 import { openMenu } from ".";
-import { routeTo } from "../../lib/route-helper";
+import { RouterLink } from "../../router";
 
 export default function Links() {
   return (
@@ -23,13 +23,12 @@ export default function Links() {
           </a>
         </li>
         <li class="px-3">
-          <a
+          <RouterLink
             href="/voby-dev/playground"
-            onClick={(evt) => routeTo("/voby-dev/playground", evt)}
             class="block text-base py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-emerald-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
           >
             Playground
-          </a>
+          </RouterLink>
         </li>
         <li class="px-3">
           <a

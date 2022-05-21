@@ -22,6 +22,7 @@
   "dependencies": {
     "esbuild-wasm": "^0.14.39",
     "monaco-editor": "^0.33.0",
+    "regexparam": "^2.0.0",
     "voby": "*"
   },
   "private": true

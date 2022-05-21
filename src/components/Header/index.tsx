@@ -1,5 +1,5 @@
 import { $, Ternary } from "voby";
-import { routeTo } from "../../lib/route-helper";
+import { RouterLink } from "../../router";
 import Logo from "../Logo";
 import Links from "./Links";
 
@@ -9,18 +9,14 @@ export default function Header() {
   return (
     <nav class="z-40 shadow-lg bg-white border-gray-200 px-3 md:px-7 sm:px-4 py-2.5 md:py-4">
       <div class="flex flex-wrap justify-between items-center mx-auto">
-        <a
-          href="/voby-dev/"
-          onClick={(evt) => routeTo("/voby-dev/", evt)}
-          class="flex items-center"
-        >
+        <RouterLink href="/voby-dev/" class="flex items-center">
           <div class="mr-3 h-6 sm:h-9">
             <Logo />
           </div>
           <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
             Voby
           </span>
-        </a>
+        </RouterLink>
         <button
           type="button"
           class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
