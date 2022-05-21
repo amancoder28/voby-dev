@@ -25,7 +25,7 @@
       // https://username.github.io/repo-name/one/two?a=b&c=d#qwe becomes
       // https://username.github.io/repo-name/?/one/two&a=b~and~c=d#qwe
       // Otherwise, leave pathSegmentsToKeep as 0.
-      var pathSegmentsToKeep = 0;
+      var pathSegmentsToKeep = 1;
 
       var l = window.location;
       l.replace(
@@ -38,11 +38,5 @@
 
     </script>
   </head>
-  <body class="flex flex-col">
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <script defer type="module" src="/src/index.tsx"></script>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
-    </style>
-  </body>
+  <body></body>
 </html>
