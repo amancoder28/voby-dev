@@ -32,8 +32,7 @@ const Counter = () => {
   );
 };
 
-render(<Counter />, document.body);
-      `,
+render(<Counter />, document.body);\n`,
       "typescript",
       Uri.file("index.tsx"),
     ),
