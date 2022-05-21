@@ -41,6 +41,7 @@ export const Editor = () => {
     editorData((data) => {
       const index = data.findIndex((tab) => tab.id === id);
       if (index > -1) {
+        data[index].model.dispose();
         data.splice(index, 1);
         newActiveId = (data[index - 1] || data[index + 1]).id;
       }
