@@ -46,7 +46,7 @@ export const Editor = () => {
   return (
     <>
       <div class="flex flex-col" style={() => `width: clamp(25%, ${editorWidth()}%, 75%)`}>
-        <div class="flex mx-3 shadow-md z-20">
+        <div class="flex px-3 shadow-md z-20">
           <For values={editorData}>
             {(data) => (
               <div class="flex gap-1 p-3" onClick={() => activeTab(data.id)}>
