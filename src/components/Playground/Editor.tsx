@@ -24,13 +24,15 @@ export const Editor = () => {
           100,
       );
     };
-    window.addEventListener("mousemove", onResize);
-    window.addEventListener("touchmove", onResize);
-    window.addEventListener("mouseup", () => {
+    const end = () => {
       window.removeEventListener("mousemove", onResize);
       window.removeEventListener("touchmove", onResize);
       resizing(false);
-    });
+    };
+    window.addEventListener("mousemove", onResize);
+    window.addEventListener("touchmove", onResize);
+    window.addEventListener("mouseup", end);
+    window.addEventListener("touchend", end);
   };
 
   const createNewTab = () => {
