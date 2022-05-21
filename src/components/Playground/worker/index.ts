@@ -18,16 +18,20 @@ self.addEventListener("message", async ({ data }: { data: { file: string; value:
           name: "virtual-files",
           setup(build) {
             build.onResolve({ filter: /.*/ }, (args) => {
+              if (import.meta.env.DEV) console.log("resolve", args);
+
               if (args.kind === "entry-point") {
                 return { path: `/${args.path}` };
               }
               if (args.kind === "import-statement") {
-                if (args.path.startsWith("./") || args.path.startsWith("/")) {
-                  return { path: `/${args.path}` };
+                if (args.path.startsWith("./")) {
+                  return { path: `${args.path.slice(1)}.tsx` };
                 }
               }
             });
             build.onLoad({ filter: /.*/ }, (args) => {
+              if (import.meta.env.DEV) console.log("load", args);
+
               const contents = data.find((d) => d.file === args.path.slice(1))?.value;
               if (contents) return { contents, loader: "tsx" };
             });
