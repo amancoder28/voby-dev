@@ -4,13 +4,13 @@ import { strengths } from "./strengths";
 export default function Hero() {
   return (
     <section>
-      <div class="text-center mt-4 md:mt-[10vh] text-4xl md:text-7xl font-extrabold mx-4">
+      <div class="text-center mt-3 md:mt-[10vh] text-4xl md:text-7xl font-extrabold mx-3">
         <h1 class="mb-1 md:mb-4">A High Performance</h1>
         <h1 class="mb-4 md:mb-8">Javascript Framework</h1>
       </div>
 
       <div class="text-center">
-        <p class="font-300 md:font-normal text-gray-9 text-lg md:text-2xl mx-5">
+        <p class="font-normal text-gray-9 text-lg md:text-2xl mx-5">
           A fine grained observable based reactivity for building rich web applications.
         </p>
       </div>
