@@ -1,9 +1,9 @@
 export default function Spinner() {
   return (
-    <section class="mt-10vh flex-center ">
+    <section class="mt-10vh flex-center">
       <svg
         role="status"
-        class="w-12 h-12 mr-2 text-gray-200 spinner fill-blue-600"
+        class="w-14 h-14 mr-2 text-gray-200 spinner fill-blue-600"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

@@ -5,8 +5,7 @@ body {
 
 body {
   margin: 0;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -32,6 +31,22 @@ code {
   to {
     transform: rotate(360deg);
   }
+}
+
+.button {
+  @apply focus:ring-4 focus:ring-blue-300 font-medium text-sm md:text-base rounded-lg px-5 py-2.5 mr-2 mb-2;
+}
+
+.blue {
+  @apply bg-blue-700 hover:bg-blue-800 dark:bg-blue-600 font-medium dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800;
+}
+
+.green {
+  @apply text-white bg-emerald-700 hover:bg-emerald-800 dark:bg-emerald-600 dark:hover:bg-emerald-700 focus:outline-none dark:focus:ring-emerald-800;
+}
+
+.gray {
+  @apply text-black bg-gray-300 hover:bg-gray-500 dark:bg-gray-500 dark:hover:bg-gray-500 focus:outline-none dark:focus:ring-gray-500;
 }
 
 footer {

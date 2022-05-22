@@ -3,42 +3,48 @@ import { RouterLink } from "../../router";
 
 export default function Links() {
   return (
-    <div class={() => `${openMenu() ? "visible" : "hidden"} w-full md:block md:w-auto`}>
+    <div
+      class={() =>
+        `${
+          openMenu() ? "visible" : "hidden"
+        } mt-3 border-t-2 md:border-none border-gray-200 w-full md:block md:w-auto`
+      }
+    >
       <ul class="flex flex-col mt-4 md:flex-row md:mt-0 md:text-sm md:font-medium">
-        <li class="px-3">
+        <li class="px-8 md:px-4">
           <a
             href="#"
-            class="block text-base py-2 pr-4 pl-3 text-gray-700 text-white rounded md:bg-transparent md:text-emerald-700 md:p-0 dark:text-white"
+            class="block text-base md:text-lg font-medium py-3 pr-4 pl-3 text-gray-700 text-white rounded border-b border-gray-200 md:bg-transparent md:text-emerald-700 md:p-0 dark:text-white"
             aria-current="page"
           >
             Docs
           </a>
         </li>
-        <li class="px-3">
+        <li class="px-8 md:px-4">
           <a
             href="#"
-            class="block text-base py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-emerald-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            class="block text-base md:text-lg font-medium py-3 pr-4 pl-3 text-gray-700 border-b border-gray-200 md:hover:bg-transparent md:border-0 md:hover:text-emerald-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
           >
             API
           </a>
         </li>
-        <li class="px-3">
+        <li class="px-8 md:px-4">
           <RouterLink
             href="/voby-dev/playground"
-            class="block text-base py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-emerald-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            class="block text-base md:text-lg font-medium py-3 pr-4 pl-3 text-gray-700 border-b border-gray-200 md:hover:bg-transparent md:border-0 md:hover:text-emerald-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
           >
             Playground
           </RouterLink>
         </li>
-        <li class="px-3">
+        <li class="px-8 md:px-4">
           <a
             href="#"
-            class="block text-base py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-emerald-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            class="block text-base md:text-lg font-medium py-3 pr-4 pl-3 text-gray-700 border-b border-gray-200 md:hover:bg-transparent md:border-0 md:hover:text-emerald-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
           >
             Ecosystem
           </a>
         </li>
-        <section class="flex-center">
+        <section class="pl-0 md:pl-2 py-5 md:py-0 flex-center">
           <li class="px-2">
             <a
               target="_blank"

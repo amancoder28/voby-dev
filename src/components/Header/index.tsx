@@ -7,19 +7,19 @@ export const openMenu = $(false);
 
 export default function Header() {
   return (
-    <nav class="z-40 shadow-lg bg-white border-gray-200 px-3 md:px-7 sm:px-4 py-2.5 md:py-4">
-      <div class="flex flex-wrap justify-between items-center mx-auto">
-        <RouterLink href="/voby-dev/" class="flex items-center">
-          <div class="mr-3 h-6 sm:h-9">
+    <nav class="z-40 shadow-sm bg-white border-b-2 border-gray-200 md:px-7 sm:px-4 py-3 md:py-4">
+      <div class="md:pl-10 md:pr-18 flex flex-wrap justify-between items-center mx-auto">
+        <RouterLink href="/voby-dev/" class="pl-3 flex items-center">
+          <div class="mr-4 h-6 sm:h-9">
             <Logo />
           </div>
-          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+          <span class="self-center text-xl md:text-2xl font-semibold whitespace-nowrap dark:text-white">
             Voby
           </span>
         </RouterLink>
         <button
           type="button"
-          class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          class="mr-4 inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
           aria-controls="mobile-menu"
           aria-expanded="false"
           onClick={() => openMenu(!openMenu())}
@@ -52,7 +52,6 @@ export default function Header() {
             </svg>
           </Ternary>
         </button>
-
         <Links />
       </div>
     </nav>
