@@ -1,36 +1,10 @@
 import { For } from "voby";
+import { strengths } from "./strengths";
 
 export default function Hero() {
-  const strengths = [
-    {
-      icon: "/logo.svg",
-      label: "Performant",
-      description:
-        "Truly reactive, compiler-optimized rendering system that rarely requires manual optimization.",
-    },
-    {
-      icon: "/logo.svg",
-      label: "Performant",
-      description:
-        "Truly reactive, compiler-optimized rendering system that rarely requires manual optimization.",
-    },
-    {
-      icon: "/logo.svg",
-      label: "Performant",
-      description:
-        "Truly reactive, compiler-optimized rendering system that rarely requires manual optimization.",
-    },
-    {
-      icon: "/logo.svg",
-      label: "Performant",
-      description:
-        "Truly reactive, compiler-optimized rendering system that rarely requires manual optimization.",
-    },
-  ];
-
   return (
     <section>
-      <div class="text-center mt-4 md:mt-[10vh] text-4xl md:text-7xl font-extrabold">
+      <div class="text-center mt-4 md:mt-[10vh] text-4xl md:text-7xl font-extrabold mx-2">
         <h1 class="mb-1 md:mb-4">A High Performance</h1>
         <h1 class="mb-4 md:mb-8">Javascript Framework</h1>
       </div>
