@@ -4,7 +4,7 @@ import { strengths } from "./strengths";
 export default function Hero() {
   return (
     <section>
-      <div class="text-center mt-4 md:mt-[10vh] text-4xl md:text-7xl font-extrabold mx-2">
+      <div class="text-center mt-4 md:mt-[10vh] text-4xl md:text-7xl font-extrabold mx-4">
         <h1 class="mb-1 md:mb-4">A High Performance</h1>
         <h1 class="mb-4 md:mb-8">Javascript Framework</h1>
       </div>
