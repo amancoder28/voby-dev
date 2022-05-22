@@ -3,7 +3,6 @@ import { lazy, render, Suspense } from "voby";
 
 import "uno.css";
 import "@unocss/reset/tailwind.css";
-import "./styles/global.css";
 import { path, Router } from "./router";
 import Home from "./routes";
 import Spinner from "./components/Spinner";
