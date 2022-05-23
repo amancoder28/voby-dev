@@ -39,15 +39,15 @@ export default function Hero() {
       <div class="lg:my-2 px-0 lg:px-12 flex flex-col lg:py-10 md:pt-10">
         <section class="grid sm:grid-cols-2 lg:grid-cols-4 py-3 lg:py-0 lg:px-4 rounded-lg">
           <For values={strengths}>
-            {(strength) => (
+            {({ icon, label, description }) => (
               <div class="px-10 py-4 mt-4 md:py-10 lg:ml-4 lg:mt-0 last:border-none">
                 <img
                   class="w-12 mb-5 dark:brightness-150"
-                  src={strength.icon}
-                  alt={strength.label}
+                  src={icon}
+                  alt={label}
                 />
-                <h3 class="text-xl mb-2 font-semibold">{strength.label}</h3>
-                <p class="text-base">{strength.description}</p>
+                <h3 class="text-xl mb-2 font-semibold">{label}</h3>
+                <p class="text-base">{description}</p>
               </div>
             )}
           </For>
