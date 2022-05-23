@@ -3,6 +3,7 @@
     "strict": true,
     "target": "ESNext",
     "module": "ESNext",
+    "lib": ["DOM", "ESNext", "WebWorker"],
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,

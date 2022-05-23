@@ -7,7 +7,7 @@ export default function Links() {
       class={() =>
         `${
           openMenu() ? "visible" : "hidden"
-        } mt-3 border-t-2 md:border-none border-gray-200 w-full md:block md:w-auto`
+        } mt-3 border-t-2 md:border-none border-gray-200 h-screen md:h-full overflow-hidden transition-all w-full md:block md:w-auto`
       }
     >
       <ul class="flex flex-col mt-4 md:flex-row md:mt-0 md:text-sm md:font-medium">

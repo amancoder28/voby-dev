@@ -4,9 +4,9 @@ import { strengths } from "./strengths";
 export default function Hero() {
   return (
     <section>
-      <div class="text-center mt-3 md:mt-[10vh] text-4xl md:text-7xl font-extrabold mx-3">
+      <div class="text-center mt-3 md:mt-[10vh] text-3xl md:text-7xl font-extrabold mx-3">
         <h1 class="mb-1 md:mb-4">A High Performance</h1>
-        <h1 class="mb-4 md:mb-8">Javascript Framework</h1>
+        <h1 class="mb-4 md:mb-8 mx-2">Javascript Framework</h1>
       </div>
 
       <div class="text-center">
@@ -15,9 +15,9 @@ export default function Hero() {
         </p>
       </div>
 
-      <div class="flex-center mt-8 mb-2">
-        <button class="button green mx-0 md:mx-2"> Why Voby </button>
-        <button type="button" class="button gray text-center inline-flex items-center mx-0 md:mx-2">
+      <div class="flex-center mt-8 mb-2 px-2">
+        <button class="button green mx-1 md:mx-2"> Why Voby </button>
+        <button class="button gray text-center inline-flex items-center mx-1 md:mx-2">
           Get Started
           <svg
             class="w-5 h-5 ml-2 -mr-1"
@@ -33,7 +33,7 @@ export default function Hero() {
           </svg>
         </button>
 
-        <button class="button gray mx-0 md:mx-2"> Install </button>
+        <button class="button gray mx-1 md:mx-2"> Install </button>
       </div>
 
       <div class="lg:my-2 px-0 lg:px-12 flex flex-col lg:py-10 md:pt-10">
@@ -41,11 +41,7 @@ export default function Hero() {
           <For values={strengths}>
             {({ icon, label, description }) => (
               <div class="px-10 py-4 mt-4 md:py-10 lg:ml-4 lg:mt-0 last:border-none">
-                <img
-                  class="w-12 mb-5 dark:brightness-150"
-                  src={icon}
-                  alt={label}
-                />
+                <img class="w-12 mb-5 dark:brightness-150" src={icon} alt={label} />
                 <h3 class="text-xl mb-2 font-semibold">{label}</h3>
                 <p class="text-base">{description}</p>
               </div>
