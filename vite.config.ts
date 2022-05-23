@@ -9,6 +9,7 @@ export default defineConfig({
     voby(),
     UnocssPlugin({}),
     VitePWA({
+      includeAssets: ["/voby-dev/robots.txt", "/voby-dev/assets/esbuild.243b0c1f.wasm"],
       strategies: "injectManifest",
       registerType: "autoUpdate",
       injectRegister: "inline",
@@ -19,7 +20,7 @@ export default defineConfig({
         short_name: "Voby",
         description: "Voby - A High Performance Javascript Framework",
         theme_color: "#FFF6DB",
-        start_url: "/?source=pwa",
+        start_url: "/voby-dev/?source=pwa",
         icons: [
           {
             src: "/voby-dev/pwa-logos/pwa-192x192.png",
