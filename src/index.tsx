@@ -29,9 +29,9 @@ render(
         },
       ]}
     />
-    {/* <section class={() => `${path() !== "/voby-dev/playground" ? "visible" : "hidden"}`}>
+    <section class={() => `${path() !== "/voby-dev/playground" ? "visible" : "hidden"}`}>
       <Footer />
-    </section> */}
+    </section>
   </>,
   document.body,
 );
