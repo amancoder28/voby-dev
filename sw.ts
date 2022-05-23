@@ -17,12 +17,12 @@ registerRoute(
 );
 
 registerRoute(
-  new RegExp("https://cdn.skypack.dev/.*\\.(js|css|html)"),
+  new RegExp("https://cdn.skypack.dev/-/.*\\.(js)"),
   new CacheFirst({ cacheName: "skypack-cache" }),
 );
 
 registerRoute(
-  new RegExp("https://unpkg.com/.*\\.(js|css|html)"),
+  new RegExp("https://unpkg.com/.*\\.(js)"),
   new CacheFirst({ cacheName: "unpkg-cache" }),
 );
 
