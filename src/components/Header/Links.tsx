@@ -28,7 +28,7 @@ export default function Links() {
             API
           </a>
         </li>
-        <li class="px-8 md:px-4">
+        <li class="px-8 md:px-4" onClick={() => openMenu(false)}>
           <RouterLink
             href="/voby-dev/playground"
             class="block text-base md:text-lg font-medium py-3 pr-4 pl-3 text-gray-700 border-b border-gray-200 md:hover:bg-transparent md:border-0 md:hover:text-emerald-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
@@ -37,7 +37,7 @@ export default function Links() {
           </RouterLink>
         </li>
         <li class="px-8 md:px-4">
-          <a
+          <a 
             href="#"
             class="block text-base md:text-lg font-medium py-3 pr-4 pl-3 text-gray-700 border-b border-gray-200 md:hover:bg-transparent md:border-0 md:hover:text-emerald-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
           >
