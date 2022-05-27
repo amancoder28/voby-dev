@@ -1,5 +1,4 @@
-import { $, If, Suspense, useSample } from "voby";
-import Spinner from "../Spinner";
+import { $, If, useSample } from "voby";
 import { compiler, resizing } from "./shared";
 
 const html = String.raw;

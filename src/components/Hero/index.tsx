@@ -1,4 +1,5 @@
 import { For } from "voby";
+import Sections from "./sections";
 import { strengths } from "./strengths";
 
 export default function Hero() {
@@ -38,7 +39,9 @@ export default function Hero() {
         <button class="button gray mx-1 md:mx-2">Install</button>
       </div>
 
-      <div class="lg:my-2 px-0 lg:px-12 flex flex-col lg:py-10 md:pt-10">
+      <Sections />
+
+      <div id="benefits" class="lg:my-2 px-0 lg:px-12 flex flex-col md:pt-10">
         <section class="grid sm:grid-cols-2 lg:grid-cols-4 py-3 lg:py-0 lg:px-4 rounded-lg">
           <For values={strengths}>
             {({ icon, label, description }) => (
