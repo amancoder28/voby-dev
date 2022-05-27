@@ -1,5 +1,5 @@
 import { $, Ternary } from "voby";
-import { RouterLink } from "../../router";
+import { path, RouterLink } from "../../router";
 import Logo from "../Logo";
 import Links from "./Links";
 
@@ -7,13 +7,19 @@ export const openMenu = $(false);
 
 export default function Header() {
   return (
-    <nav class="z-40 shadow-sm bg-white border-b-2 border-gray-200 md:px-7 sm:px-4 py-3 md:py-4">
-      <div class="md:pl-10 md:pr-18 flex flex-wrap justify-between items-center mx-auto">
-        <RouterLink href="/voby-dev/" class="pl-3 flex items-center">
-          <div class="mr-4 h-6 sm:h-9">
-            <Logo />
-          </div>
-          <span class="self-center text-xl md:text-2xl font-semibold whitespace-nowrap dark:text-white">
+    <nav
+      class={() =>
+        `${
+          path() === "/voby-dev/playground" ? "" : "fixed w-full"
+        } z-40 shadow-sm bg-white border-b-2 border-gray-200 md:px-7 sm:px-3 h-[55px]`}
+    >
+      <div class="md:pl-2 mt-3 md:pr-10 flex items-center flex-wrap justify-between">
+        <RouterLink
+          href="/voby-dev/"
+          class="pl-3 space-x-2 md:space-x-4 flex items-center justify-between"
+        >
+          <Logo />
+          <span class="text-xl font-semibold whitespace-nowrap dark:text-white">
             Voby
           </span>
         </RouterLink>

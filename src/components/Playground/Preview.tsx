@@ -1,4 +1,5 @@
-import { $, useSample } from "voby";
+import { $, If, Suspense, useSample } from "voby";
+import Spinner from "../Spinner";
 import { compiler, resizing } from "./shared";
 
 const html = String.raw;
@@ -41,25 +42,40 @@ export const Preview = () => {
   return (
     <div class="flex-1 flex flex-col">
       <button
-        class="shadow-md z-20 h-[52px] mb-3"
+        class="shadow-md z-20 h-[40px] md:h-[48px] mb-3"
         onClick={() => (useSample(iframeEl)!.srcdoc = useSample(doc))}
       >
-        <svg class="h-5 pl-3" viewBox="0 0 24 24" style="fill: none; stroke: currentcolor;">
+        <svg
+          class="h-5 pl-3"
+          viewBox="0 0 24 24"
+          style="fill: none; stroke: currentcolor;"
+        >
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
             d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-          ></path>
+          >
+          </path>
         </svg>
       </button>
-      <iframe
-        style={() => `pointer-events:${resizing() ? "none" : "all"}`}
-        class="border-0 h-100%"
-        ref={iframeEl}
-        title="Voby REPL"
-        srcDoc={doc}
-        sandbox="allow-popups-to-escape-sandbox allow-scripts allow-popups allow-forms allow-pointer-lock allow-top-navigation allow-modals allow-same-origin"
-      />
+
+      <If
+        when={doc}
+        fallback={
+          <h1 class="flex-center font-normal text-xl mt-30% md:mt-50%">
+            Loading Playground...
+          </h1>
+        }
+      >
+        <iframe
+          style={() => `pointer-events:${resizing() ? "none" : "all"}`}
+          class="border-0 h-100%"
+          ref={iframeEl}
+          title="Voby REPL"
+          srcDoc={doc}
+          sandbox="allow-popups-to-escape-sandbox allow-scripts allow-popups allow-forms allow-pointer-lock allow-top-navigation allow-modals allow-same-origin"
+        />
+      </If>
     </div>
   );
 };

@@ -9,7 +9,6 @@ export default defineConfig({
     voby(),
     UnocssPlugin({}),
     VitePWA({
-      includeAssets: ["/voby-dev/robots.txt", "/voby-dev/assets/esbuild.243b0c1f.wasm"],
       strategies: "injectManifest",
       registerType: "autoUpdate",
       injectRegister: "inline",
