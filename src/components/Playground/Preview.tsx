@@ -67,7 +67,7 @@ export const Preview = () => {
       <If when={doc} fallback={<h1 class="flex-center font-normal text-xl mt-30% md:mt-50%">Loading Playground...</h1>}>
         <iframe
           style={() => `pointer-events:${resizing() ? "none" : "all"}`}
-          class="border-0 h-100%"
+          class="border-0 flex-1"
           ref={iframeEl}
           title="Voby REPL"
           srcDoc={doc}
