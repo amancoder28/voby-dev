@@ -27,5 +27,8 @@ export const activeModel = useComputed(() => {
 
 export const resizing = $(false);
 
-import Worker from "../worker?worker";
-export const compiler = new Worker();
+import CompilerWorker from "../workers/compile?worker";
+export const compiler = new CompilerWorker();
+
+import FormatterWorker from "../workers/format?worker";
+export const formatter = new FormatterWorker();

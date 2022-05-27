@@ -46,9 +46,9 @@ languages.typescript.typescriptDefaults.setCompilerOptions({
 import { $, useEffect, useSample } from "voby";
 import { activeModel, compiler, editorData } from "./shared";
 
+export let mEditor: editor.IStandaloneCodeEditor;
 export const MonacoEditor = () => {
   const editorEl = $<HTMLElement>();
-  let mEditor: editor.IStandaloneCodeEditor;
   let resizeObserver: ResizeObserver;
 
   useEffect(() => {
