@@ -12,8 +12,8 @@ export default function Sections() {
     <section
       class={() =>
         `${
-          position()! >= 300 ? "fixed w-full top-0 bg-white mt-12" : "mt-20"
-        } mb-6 h-55px flex-center border-t-2 border-b-2 border-gray-200`}
+          position()! >= 330 ? "fixed w-full top-0 bg-white mt-12" : "mt-10"
+        } z-40 mb-6 h-55px flex-center border-t-2 border-b-2 border-gray-200`}
     >
       <main class="space-x-10 md:space-x-14 font-normal text-base md:text-lg transition-all">
         <a href="#benefits">Benefits</a>
