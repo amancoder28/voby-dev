@@ -41,7 +41,7 @@ export const Preview = () => {
   return (
     <div class="flex-1 flex flex-col">
       <button
-        class="shadow-md z-20 h-[52px] mb-3"
+        class="shadow-md z-20 h-[52px]"
         onClick={() => (useSample(iframeEl)!.srcdoc = useSample(doc))}
       >
         <svg class="h-5 pl-3" viewBox="0 0 24 24" style="fill: none; stroke: currentcolor;">
