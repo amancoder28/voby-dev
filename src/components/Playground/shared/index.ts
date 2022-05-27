@@ -1,22 +1,35 @@
 import { $, useComputed } from "voby";
 import { editor, Uri } from "monaco-editor";
+import { decompressFromURL } from "@amoutonbrady/lz-string";
+import { EditorDataJson, getEditorDataFromJson } from "../parsers";
 import demoCode from "./playgroundDemo?raw";
 
-type EditorData = {
+export interface EditorData {
   id: number;
   name: string;
   fileType: "ts" | "tsx" | "js" | "jsx";
   model: editor.ITextModel;
-};
+}
 
-export const editorData = $<EditorData[]>([
-  {
-    id: 0,
-    name: "index",
-    fileType: "tsx",
-    model: editor.createModel(demoCode, "typescript", Uri.file("index.tsx")),
-  },
-]);
+let rawEditorData: EditorData[];
+try {
+  const editorDataJson = JSON.parse(decompressFromURL(location.hash.slice(1))!) as EditorDataJson[];
+  for (const editorData of editorDataJson) {
+    if (typeof editorData.file !== "string" || typeof editorData.value !== "string") throw Error();
+  }
+  rawEditorData = getEditorDataFromJson(editorDataJson);
+} catch (_) {
+  rawEditorData = [
+    {
+      id: 0,
+      name: "index",
+      fileType: "tsx",
+      model: editor.createModel(demoCode, "typescript", Uri.file("index.tsx")),
+    },
+  ];
+}
+
+export const editorData = $(rawEditorData);
 
 export const activeTab = $(0);
 

@@ -44,6 +44,7 @@ languages.typescript.typescriptDefaults.setCompilerOptions({
 });
 
 import { $, Observable, useEffect, useSample } from "voby";
+import { editorDataAsJson } from "./parsers";
 import { activeModel, compiler, editorData } from "./shared";
 
 export const MonacoEditor = ({ position$ }: { position$?: Observable<number> }) => {
@@ -82,22 +83,8 @@ export const MonacoEditor = ({ position$ }: { position$?: Observable<number> }) 
       });
     }
 
-    mEditor.onDidChangeModelContent(() => {
-      console.log(mEditor.getValue());
-      compiler.postMessage(
-        useSample(editorData).map((tab) => ({
-          file: `${tab.name}.${tab.fileType}`,
-          value: tab.model.getValue(),
-        })),
-      );
-    });
-
-    compiler.postMessage(
-      useSample(editorData).map((tab) => ({
-        file: `${tab.name}.${tab.fileType}`,
-        value: tab.model.getValue(),
-      })),
-    );
+    mEditor.onDidChangeModelContent(() => compiler.postMessage(editorDataAsJson()));
+    compiler.postMessage(editorDataAsJson());
 
     resizeObserver = new ResizeObserver(([entry]) => {
       const size = entry.contentBoxSize[0];
