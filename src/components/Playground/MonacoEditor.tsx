@@ -43,11 +43,11 @@ languages.typescript.typescriptDefaults.setCompilerOptions({
   allowNonTsExtensions: true,
 });
 
-import { $, useEffect, useSample } from "voby";
+import { $, Observable, useEffect, useSample } from "voby";
 import { activeModel, compiler, editorData } from "./shared";
 
-export let mEditor: editor.IStandaloneCodeEditor;
-export const MonacoEditor = () => {
+export const MonacoEditor = ({ position$ }: { position$?: Observable<number> }) => {
+  let mEditor: editor.IStandaloneCodeEditor;
   const editorEl = $<HTMLElement>();
   let resizeObserver: ResizeObserver;
 
@@ -73,6 +73,14 @@ export const MonacoEditor = () => {
       automaticLayout: true,
       padding: { top: 15 },
     });
+
+    if (position$) {
+      mEditor.onDidChangeCursorPosition(({ position }) => position$(mEditor.getModel()?.getOffsetAt(position) || 0));
+      useEffect(() => {
+        mEditor.setPosition(mEditor.getModel()?.getPositionAt(position$()) || { lineNumber: 0, column: 0 });
+        mEditor.focus();
+      });
+    }
 
     mEditor.onDidChangeModelContent(() => {
       console.log(mEditor.getValue());

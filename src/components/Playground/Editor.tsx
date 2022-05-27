@@ -1,26 +1,25 @@
 import { editor, Uri } from "monaco-editor";
 import { $, For, If, useSample } from "voby";
 import { activeModel, activeTab, editorData, formatter, resizing } from "./shared";
-import { mEditor, MonacoEditor } from "./MonacoEditor";
+import { MonacoEditor } from "./MonacoEditor";
 import { horizontal, playgroundSize, playgroundTop } from ".";
 
 export const Editor = () => {
   const editorSize = $(50);
+  const cursorPosition = $(0);
 
   const format = () => {
     const model = useSample(activeModel);
     if (!model) return;
-    const cursorOffset = model.getOffsetAt(mEditor.getPosition() || { lineNumber: 0, column: 0 });
     formatter.addEventListener(
       "message",
       ({ data }: { data: { code: string; cursorOffset: number } }) => {
         model.setValue(data.code);
-        mEditor.setPosition(model.getPositionAt(cursorOffset));
-        mEditor.focus();
+        cursorPosition(data.cursorOffset);
       },
       { once: true },
     );
-    formatter.postMessage({ code: model.getValue(), cursorOffset });
+    formatter.postMessage({ code: model.getValue(), cursorOffset: useSample(cursorPosition) });
   };
 
   const startResizing = () => {
@@ -35,11 +34,7 @@ export const Editor = () => {
         x = (event as MouseEvent).x;
         y = (event as MouseEvent).y;
       }
-      editorSize(
-        ((useSample(horizontal) ? x : y - useSample(playgroundTop)) /
-          useSample(playgroundSize)) *
-          100,
-      );
+      editorSize(((useSample(horizontal) ? x : y - useSample(playgroundTop)) / useSample(playgroundSize)) * 100);
     };
     const end = () => {
       window.removeEventListener("mousemove", onResize);
@@ -60,11 +55,7 @@ export const Editor = () => {
         id: (id = data.length),
         name: `tab-${id}`,
         fileType: "tsx",
-        model: editor.createModel(
-          "\n",
-          "typescript",
-          Uri.file(`tab-${id}.tsx`),
-        ),
+        model: editor.createModel("\n", "typescript", Uri.file(`tab-${id}.tsx`)),
       },
     ]);
     activeTab(id!);
@@ -88,10 +79,7 @@ export const Editor = () => {
     <>
       <div
         class="flex flex-col"
-        style={() =>
-          `${
-            horizontal() ? "width" : "height"
-          }: clamp(25%, ${editorSize()}%, 75%)`}
+        style={() => `${horizontal() ? "width" : "height"}: clamp(25%, ${editorSize()}%, 75%)`}
       >
         <div class="flex items-center h-[40px] md:h-[48px] px-3 shadow-md z-20">
           <For values={editorData}>
@@ -100,18 +88,13 @@ export const Editor = () => {
                 class={() =>
                   `flex gap-1 p-2.5 border-y-2 border-y-transparent cursor-pointer ${
                     activeTab() === data.id ? " border-b-emerald-700" : ""
-                  }`}
+                  }`
+                }
                 onClick={() => activeTab(data.id)}
               >
                 {data.name}.{data.fileType}
                 <If when={data.id !== 0}>
-                  <button
-                    onClick={(
-                      e,
-                    ) => (e.stopImmediatePropagation(), deleteTab(data.id))}
-                  >
-                    ×
-                  </button>
+                  <button onClick={(e) => (e.stopImmediatePropagation(), deleteTab(data.id))}>×</button>
                 </If>
               </div>
             )}
@@ -134,14 +117,13 @@ export const Editor = () => {
           </button>
         </div>
         <div class="flex-1 relative">
-          <MonacoEditor />
+          <MonacoEditor position$={cursorPosition} />
         </div>
       </div>
       <div
         class={() =>
-          `${
-            horizontal() ? "w-2 cursor-col-resize" : "h-2 cursor-row-resize"
-          } bg-gray-300 hover:(bg-emerald-700)`}
+          `${horizontal() ? "w-2 cursor-col-resize" : "h-2 cursor-row-resize"} bg-gray-300 hover:(bg-emerald-700)`
+        }
         onMouseDown={startResizing}
         onTouchStart={startResizing}
       />

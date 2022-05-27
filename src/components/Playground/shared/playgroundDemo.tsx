@@ -7,13 +7,7 @@ const MINUS = "➖";
 
 /* MAIN */
 
-const Button = ({
-  onClick,
-  children,
-}: {
-  onClick: () => void;
-  children: JSX.Children;
-}): JSX.Element => {
+const Button = ({ onClick, children }: { onClick: () => void; children: JSX.Children }): JSX.Element => {
   return (
     <button
       style={{
@@ -51,27 +45,18 @@ const Container = ({ children }: { children: JSX.Children }): JSX.Element => {
 };
 
 const HStack = ({ children }: { children: JSX.Children }): JSX.Element => {
-  return (
-    <div style={{ display: "flex", flexDirection: "row", justifyContent: "center", gap: "10px" }}>
-      {children}
-    </div>
-  );
+  return <div style={{ display: "flex", flexDirection: "row", justifyContent: "center", gap: "10px" }}>{children}</div>;
 };
 
 const VStack = ({ children }: { children: JSX.Children }): JSX.Element => {
   return (
-    <div
-      style={{ display: "flex", flexDirection: "column", justifyContent: "center", gap: "10px" }}
-    >
-      {children}
-    </div>
+    <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", gap: "10px" }}>{children}</div>
   );
 };
 
 const Emojis = ({ value }: { value: Observable<number> }): JSX.Element => {
   const value2sign = (value: number) => (Math.sign(value) < 0 ? MINUS : "");
-  const value2chunks = (value: number): number[] =>
-    value <= 5 ? [value] : [...value2chunks(value - 5), 5];
+  const value2chunks = (value: number): number[] => (value <= 5 ? [value] : [...value2chunks(value - 5), 5]);
   const chunk2emoji = (chunk: number) => EMOJIS[chunk];
 
   const sign = () => value2sign(value());
