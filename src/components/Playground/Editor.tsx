@@ -36,7 +36,8 @@ export const Editor = () => {
         y = (event as MouseEvent).y;
       }
       editorSize(
-        ((useSample(horizontal) ? x : y - useSample(playgroundTop)) / useSample(playgroundSize)) *
+        ((useSample(horizontal) ? x : y - useSample(playgroundTop)) /
+          useSample(playgroundSize)) *
           100,
       );
     };
@@ -59,7 +60,11 @@ export const Editor = () => {
         id: (id = data.length),
         name: `tab-${id}`,
         fileType: "tsx",
-        model: editor.createModel("\n", "typescript", Uri.file(`tab-${id}.tsx`)),
+        model: editor.createModel(
+          "\n",
+          "typescript",
+          Uri.file(`tab-${id}.tsx`),
+        ),
       },
     ]);
     activeTab(id!);
@@ -83,22 +88,28 @@ export const Editor = () => {
     <>
       <div
         class="flex flex-col"
-        style={() => `${horizontal() ? "width" : "height"}: clamp(25%, ${editorSize()}%, 75%)`}
+        style={() =>
+          `${
+            horizontal() ? "width" : "height"
+          }: clamp(25%, ${editorSize()}%, 75%)`}
       >
-        <div class="flex px-3 shadow-md z-20">
+        <div class="flex items-center h-[40px] md:h-[48px] px-3 shadow-md z-20">
           <For values={editorData}>
             {(data) => (
               <div
                 class={() =>
                   `flex gap-1 p-2.5 border-y-2 border-y-transparent cursor-pointer ${
                     activeTab() === data.id ? " border-b-emerald-700" : ""
-                  }`
-                }
+                  }`}
                 onClick={() => activeTab(data.id)}
               >
                 {data.name}.{data.fileType}
                 <If when={data.id !== 0}>
-                  <button onClick={(e) => (e.stopImmediatePropagation(), deleteTab(data.id))}>
+                  <button
+                    onClick={(
+                      e,
+                    ) => (e.stopImmediatePropagation(), deleteTab(data.id))}
+                  >
                     ×
                   </button>
                 </If>
@@ -130,8 +141,7 @@ export const Editor = () => {
         class={() =>
           `${
             horizontal() ? "w-2 cursor-col-resize" : "h-2 cursor-row-resize"
-          } bg-gray-300 hover:(bg-emerald-700)`
-        }
+          } bg-gray-300 hover:(bg-emerald-700)`}
         onMouseDown={startResizing}
         onTouchStart={startResizing}
       />

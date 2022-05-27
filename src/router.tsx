@@ -1,12 +1,14 @@
 import { parse } from "regexparam";
-import { $, useSample } from "voby";
+import { $, useComputed, useSample } from "voby";
 
 const exec = (path: string, result: { keys: string[]; pattern: RegExp }) => {
   const matches = result.pattern.exec(path);
   if (!matches) return {};
   const res: Record<string, string | null> = {};
   let i = 0;
-  while (i < result.keys.length) res[result.keys[i]] = matches[++i] ? decodeURI(matches[i]) : null;
+  while (i < result.keys.length) {
+    res[result.keys[i]] = matches[++i] ? decodeURI(matches[i]) : null;
+  }
   return res;
 };
 
@@ -21,10 +23,16 @@ export const Router = ({
 }: {
   routes: { path: string; component: JSX.Child; title?: string }[];
 }) => {
-  const parsedRoutes = routes.map((route) => ({ ...route, regex: parse(route.path) }));
-  return () => {
+  const parsedRoutes = routes.map((route) => ({
+    ...route,
+    regex: parse(route.path),
+  }));
+
+  return useComputed(() => {
     const p = path();
-    const route = parsedRoutes.find((route) => route.regex.pattern.test(p) || route.path === "*");
+    const route = parsedRoutes.find((route) =>
+      route.regex.pattern.test(p) || route.path === "*"
+    );
     if (updateUrl) {
       const url = new URL(location.href);
       url.pathname = p;
@@ -35,10 +43,12 @@ export const Router = ({
 
     params(exec(p, route.regex));
     return route.component;
-  };
+  });
 };
 
-export const RouterLink = (props: JSX.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+export const RouterLink = (
+  props: JSX.AnchorHTMLAttributes<HTMLAnchorElement>,
+) => {
   const el = $<HTMLAnchorElement>();
   props.onClick = (event: MouseEvent) => {
     const anchor = useSample(el);
