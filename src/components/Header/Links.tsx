@@ -6,14 +6,14 @@ export default function Links() {
     <div
       class={() =>
         `${
-          openMenu() ? "visible" : "hidden"
+          openMenu() ? "visible border-t border-gray-200 mt-1" : "hidden"
         } z-40 bg-white w-full h-screen md:h-full overflow-hidden transition-all w-full md:block md:w-auto`}
     >
       <ul class="flex flex-col mt-4 md:flex-row md:mt-0 md:text-sm md:font-medium">
         <li class="px-8 md:px-4">
           <a
             href="#"
-            class="block text-base font-bold py-3 pr-4 pl-3 text-gray-700 text-white rounded md:bg-transparent md:text-emerald-700 md:p-0 dark:text-white"
+            class="block text-base font-bold py-3 pr-4 pl-3 text-gray-700 text-white border-b border-gray-200 rounded md:bg-transparent md:text-emerald-700 md:p-0 dark:text-white"
             aria-current="page"
           >
             Docs
@@ -43,7 +43,7 @@ export default function Links() {
             Ecosystem
           </a>
         </li>
-        <section class="pl-0 md:pl-2 py-5 md:py-0 flex-center">
+        <section class="pl-0 md:pl-2 py-6 md:py-0 flex-center space-x-2 md:space-x-1">
           <li class="px-2">
             <a
               target="_blank"

@@ -7,7 +7,7 @@ export default function Hero() {
     <section>
       <div class="text-center mt-20 md:mt-[18.5vh] text-3xl md:text-7xl font-extrabold mx-3">
         <h1 class="mb-1 md:mb-4">A High Performance</h1>
-        <h1 class="mb-4 md:mb-8 mx-2">Javascript Framework</h1>
+        <h1 class="mb-4 md:mb-8 mx-2">Javascript  Framework</h1>
       </div>
 
       <div class="text-center">
