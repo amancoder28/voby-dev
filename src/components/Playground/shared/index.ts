@@ -40,9 +40,9 @@ export const editorData = $(rawEditorData);
 
 export const activeTab = $(0);
 
-export const activeModel = useComputed(() => {
+export const activeData = useComputed(() => {
   const activeTabId = activeTab();
-  return editorData().find((tab) => tab.id === activeTabId)?.model;
+  return editorData().find((tab) => tab.id === activeTabId);
 });
 
 export const resizing = $(false);

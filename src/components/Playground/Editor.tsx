@@ -1,6 +1,6 @@
 import { editor, Uri } from "monaco-editor";
 import { $, For, If, useSample } from "voby";
-import { activeModel, activeTab, editorData, formatter, resizing } from "./shared";
+import { activeData, activeTab, editorData, formatter, resizing } from "./shared";
 import { MonacoEditor } from "./MonacoEditor";
 import { horizontal, playgroundSize, playgroundTop } from ".";
 
@@ -9,8 +9,9 @@ export const Editor = () => {
   const cursorPosition = $(0);
 
   const format = () => {
-    const model = useSample(activeModel);
-    if (!model) return;
+    const data = useSample(activeData);
+    if (!data) return;
+    const { model, fileType } = data;
     formatter.addEventListener(
       "message",
       ({ data }: { data: { code: string; cursorOffset: number } }) => {
@@ -19,7 +20,11 @@ export const Editor = () => {
       },
       { once: true },
     );
-    formatter.postMessage({ code: model.getValue(), cursorOffset: useSample(cursorPosition) });
+    formatter.postMessage({
+      code: model.getValue(),
+      cursorOffset: useSample(cursorPosition),
+      isCss: fileType === "css",
+    });
   };
 
   const startResizing = () => {

@@ -46,7 +46,7 @@ languages.typescript.typescriptDefaults.setCompilerOptions({
 
 import { $, Observable, useEffect, useSample } from "voby";
 import { editorDataAsJson } from "./parsers";
-import { activeModel, compiler, editorData } from "./shared";
+import { activeData, compiler } from "./shared";
 
 export const MonacoEditor = ({ position$ }: { position$?: Observable<number> }) => {
   let mEditor: editor.IStandaloneCodeEditor;
@@ -66,7 +66,7 @@ export const MonacoEditor = ({ position$ }: { position$?: Observable<number> }) 
     mEditor = editor.create(el, {
       lineDecorationsWidth: 5,
       lineNumbersMinChars: 3,
-      model: useSample(activeModel),
+      model: useSample(activeData)?.model,
       language: "javascript",
       minimap: { enabled: false },
       theme: "vscode-light",
@@ -97,7 +97,7 @@ export const MonacoEditor = ({ position$ }: { position$?: Observable<number> }) 
   });
 
   useEffect(() => {
-    const model = activeModel();
+    const model = activeData()?.model;
     if (model && mEditor && mEditor.getModel() !== model) {
       mEditor.setModel(model);
     }
