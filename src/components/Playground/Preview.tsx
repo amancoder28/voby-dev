@@ -5,7 +5,7 @@ import { compiler, resizing } from "./shared";
 
 const html = String.raw;
 
-const getHtml = (code: string) => {
+const getHtml = (js: string, css?: string) => {
   return html`<!DOCTYPE html>
     <html lang="en">
       <head>
@@ -22,8 +22,9 @@ const getHtml = (code: string) => {
           }
         </script>
         <script defer type="module">
-          ${code};
+          ${js};
         </script>
+        ${css ? `<style>${css}</style>` : ""}
       </head>
       <body></body>
     </html>`;
@@ -33,8 +34,8 @@ export const Preview = () => {
   const doc = $("");
   const iframeEl = $<HTMLIFrameElement>();
 
-  compiler.onmessage = ({ data }: { data: { code: string } }) => {
-    if (data.code) doc(getHtml(data.code));
+  compiler.onmessage = ({ data }: { data: { js: string; css?: string } }) => {
+    doc(getHtml(data.js, data.css));
   };
 
   const share = () => {

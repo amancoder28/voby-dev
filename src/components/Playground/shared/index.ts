@@ -2,12 +2,13 @@ import { $, useComputed } from "voby";
 import { editor, Uri } from "monaco-editor";
 import { decompressFromURL } from "@amoutonbrady/lz-string";
 import { EditorDataJson, getEditorDataFromJson } from "../parsers";
-import demoCode from "./playgroundDemo?raw";
+import demoTs from "./playgroundDemo?raw";
+import demoCss from "./playgroundDemo.css?raw";
 
 export interface EditorData {
   id: number;
   name: string;
-  fileType: "ts" | "tsx" | "js" | "jsx";
+  fileType: "ts" | "tsx" | "js" | "jsx" | "css";
   model: editor.ITextModel;
 }
 
@@ -24,7 +25,13 @@ try {
       id: 0,
       name: "index",
       fileType: "tsx",
-      model: editor.createModel(demoCode, "typescript", Uri.file("index.tsx")),
+      model: editor.createModel(demoTs, "typescript", Uri.file("index.tsx")),
+    },
+    {
+      id: 1,
+      name: "main",
+      fileType: "css",
+      model: editor.createModel(demoCss, "css", Uri.file("main.css")),
     },
   ];
 }

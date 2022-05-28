@@ -10,6 +10,7 @@ self.addEventListener("message", async ({ data }: { data: { file: string; value:
     await esbuildPromise;
     const res = await build({
       entryPoints: ["index.tsx"],
+      outdir: "/",
       bundle: true,
       format: "esm",
       external: ["voby"],
@@ -25,6 +26,7 @@ self.addEventListener("message", async ({ data }: { data: { file: string; value:
               }
               if (args.kind === "import-statement") {
                 if (args.path.startsWith("./")) {
+                  if (/\.css$|\.ts$|\.tsx$|\.js$|\.jsx$/.test(args.path)) return { path: args.path.slice(1) };
                   return { path: `${args.path.slice(1)}.tsx` };
                 }
               }
@@ -32,16 +34,19 @@ self.addEventListener("message", async ({ data }: { data: { file: string; value:
             build.onLoad({ filter: /.*/ }, (args) => {
               if (import.meta.env.DEV) console.log("load", args);
 
+              const loader = /\.css$/.test(args.path) ? "css" : "tsx";
               const contents = data.find((d) => d.file === args.path.slice(1))?.value;
-              if (contents) return { contents, loader: "tsx" };
+              if (contents) return { contents, loader };
             });
           },
         },
       ],
     });
 
-    const code = res.outputFiles?.[0].text;
-    if (code) self.postMessage({ code });
+    if (!res.outputFiles?.length) return;
+    const js = res.outputFiles.find((file) => file.path === "/index.js")?.text;
+    const css = res.outputFiles.find((file) => file.path === "/index.css")?.text;
+    if (js) self.postMessage({ js, css });
   } catch (error) {
     console.log(error);
   }

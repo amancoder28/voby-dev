@@ -1,0 +1,42 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #fff5db;
+  display: flex;
+}
+
+.main {
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.emojis {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  font-size: 6rem;
+  text-align: center;
+}
+
+.button {
+  padding: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.5rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  background-color: #3f3f3f;
+  color: #f9f9f9;
+  border-width: 0;
+  place-self: end;
+  margin-right: 0.25rem;
+}
+
+.button:last-child {
+  place-self: start;
+  margin-left: 0.25rem;
+}

@@ -1,8 +1,7 @@
 import { editor, languages, Uri } from "monaco-editor";
-// @ts-ignore
 import editorWorker from "monaco-editor/esm/vs/editor/editor.worker?worker";
-// @ts-ignore
 import tsWorker from "monaco-editor/esm/vs/language/typescript/ts.worker?worker";
+import cssWorker from "monaco-editor/esm/vs/language/css/css.worker?worker";
 
 // import vsLight from "./vs-light-plus.json";
 
@@ -12,6 +11,8 @@ import tsWorker from "monaco-editor/esm/vs/language/typescript/ts.worker?worker"
       case "typescript":
       case "javascript":
         return new tsWorker();
+      case "css":
+        return new cssWorker();
       default:
         return new editorWorker();
     }

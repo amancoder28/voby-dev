@@ -14,7 +14,7 @@ export const editorDataAsJson = () => {
   }));
 };
 
-const fileTypeToTypeMap: Record<string, string> = { tsx: "typescript" };
+const fileTypeToTypeMap: Record<string, string> = { tsx: "typescript", css: "css" };
 export const getEditorDataFromJson = (json: EditorDataJson[]) => {
   return json.map<EditorData>(({ file, value }, index) => {
     const [name, fileType] = file.split(".");
