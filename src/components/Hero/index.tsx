@@ -49,7 +49,7 @@ export default function Hero() {
           } lg:my-2 px-0 lg:px-12 flex flex-col md:pt-10`}
         style="overflow-y: scroll; scroll-behavior: smooth;"
       >
-        <section class="flex-center my-2 font-bold text-lg">
+        <section class="flex-center my-2 font-bold text-xl">
           Benefits
         </section>
 
