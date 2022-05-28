@@ -1,5 +1,5 @@
 import { For } from "voby";
-import Sections from "./sections";
+import Sections, { position } from "./sections";
 import { strengths } from "./strengths";
 
 export default function Hero() {
@@ -41,8 +41,19 @@ export default function Hero() {
 
       <Sections />
 
-      <div id="benefits" class="lg:my-2 px-0 lg:px-12 flex flex-col md:pt-10">
-        <section class="grid sm:grid-cols-2 lg:grid-cols-4 py-3 lg:py-0 lg:px-4 rounded-lg">
+      <div
+        id="benefits"
+        class={() =>
+          `${
+            position()! >= 300 ? "mt-14" : ""
+          } lg:my-2 px-0 lg:px-12 flex flex-col md:pt-10`}
+        style="overflow-y: scroll; scroll-behavior: smooth;"
+      >
+        <section class="flex-center my-2 font-bold text-lg">
+          Benefits
+        </section>
+
+        <section class="grid sm:grid-cols-2 lg:grid-cols-4 py-3 lg:py-0 rounded-lg">
           <For values={strengths}>
             {({ icon, label, description }) => (
               <div class="px-10 py-4 mt-4 md:py-10 lg:ml-4 lg:mt-0 last:border-none">
