@@ -1,0 +1,13 @@
+[build]
+  base = "./"
+  publish = "dist/"
+  command = "npm run build"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[edge_functions]]
+  path = "/banner"
+  function = "banner"
