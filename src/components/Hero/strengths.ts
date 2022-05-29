@@ -3,7 +3,7 @@ export const strengths = [
     icon: "https://fonts.gstatic.com/s/i/materialiconsoutlined/trending_up/v19/24px.svg",
     label: "Performant",
     description:
-      "Truly reactive rendering system that speedy and memory efficient.",
+      "Truly reactive rendering system that's speedy and memory efficient.",
   },
   {
     icon: "https://fonts.gstatic.com/s/i/materialiconsoutlined/star/v20/24px.svg",
