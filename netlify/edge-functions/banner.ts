@@ -17,7 +17,7 @@ export default async (request: Request, { json }: Context) => {
   const bannerType = imageTypes[type] ?? "banner";
 
   const vobyImage = await fetch(
-    `https://raw.githubusercontent.com/vobyjs/voby/master/resources/banner/svg/${bannerType}.svg`,
+    `https://raw.githubusercontent.com/vobyjs/voby/master/resources/banner/png/${bannerType}.png`,
   );
 
   return cors(
@@ -25,7 +25,7 @@ export default async (request: Request, { json }: Context) => {
     new Response(vobyImage.body, {
       headers: {
         "cache-control": "public, max-age=86400, stale-while-revalidate=86400",
-        "content-type": "image/svg+xml"
+        "content-type": "image/png"
       },
     }),
   );
