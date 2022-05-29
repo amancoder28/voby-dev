@@ -3,13 +3,13 @@ export const strengths = [
     icon: "https://fonts.gstatic.com/s/i/materialiconsoutlined/trending_up/v19/24px.svg",
     label: "Performant",
     description:
-      "Truly reactive rendering system that speedy and memory efficient.",
+      "Truly reactive rendering system that's speedy and memory efficient.",
   },
   {
     icon: "https://fonts.gstatic.com/s/i/materialiconsoutlined/star/v20/24px.svg",
     label: "Reactive",
     description:
-      "Composable reactive observable based primitives joined with the flexibility of JSX."
+      "Composable, reactive observable based primitives joined with the flexibility of JSX."
   },
   {
     icon: "https://fonts.gstatic.com/s/i/materialicons/tune/v12/24px.svg",
