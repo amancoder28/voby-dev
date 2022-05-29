@@ -27,12 +27,5 @@ export default async (request: Request, { json }: Context) => {
         "cache-control": "public, max-age=86400, stale-while-revalidate=86400",
       },
     }),
-    {
-      origin: "*",
-      methods: ["GET", "HEAD"],
-      preflightContinue: false,
-      optionsSuccessStatus: 204,
-      maxAge: 86400,
-    },
   );
 };
