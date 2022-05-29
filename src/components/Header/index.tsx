@@ -15,7 +15,7 @@ export default function Header() {
     >
       <div class="md:pl-2 mt-3 md:pr-10 flex items-center flex-wrap justify-between">
         <RouterLink
-          href="/voby-dev/"
+          href="/"
           class="pl-3 space-x-2 md:space-x-4 flex items-center justify-between"
         >
           <Logo />
