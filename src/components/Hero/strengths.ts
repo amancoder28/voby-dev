@@ -9,7 +9,7 @@ export const strengths = [
     icon: "https://fonts.gstatic.com/s/i/materialiconsoutlined/star/v20/24px.svg",
     label: "Reactive",
     description:
-      "Composable, reactive observable based primitives joined with the flexibility of JSX."
+      "Composable & Reactive observable based primitives joined with the flexibility of JSX."
   },
   {
     icon: "https://fonts.gstatic.com/s/i/materialicons/tune/v12/24px.svg",
