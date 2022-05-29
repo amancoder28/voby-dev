@@ -25,6 +25,7 @@ export default async (request: Request, { json }: Context) => {
     new Response(vobyImage.body, {
       headers: {
         "cache-control": "public, max-age=86400, stale-while-revalidate=86400",
+        "content-type": "image/svg+xml"
       },
     }),
   );
