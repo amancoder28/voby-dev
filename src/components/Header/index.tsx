@@ -10,7 +10,7 @@ export default function Header() {
     <nav
       class={() =>
         `${
-          path() === "/playground" ? "" : "fixed w-full"
+          path() === "/voby-dev/playground" ? "" : "fixed w-full"
         } z-40 shadow-sm bg-white border-b-2 border-gray-200 md:px-7 sm:px-3 h-[55px]`}
     >
       <div class="md:pl-2 mt-3 md:pr-10 flex items-center flex-wrap justify-between">
