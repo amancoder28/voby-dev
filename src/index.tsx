@@ -16,11 +16,11 @@ render(
     <Router
       routes={[
         {
-          path: "/voby-dev",
+          path: "/",
           component: Home,
         },
         {
-          path: "/voby-dev/playground",
+          path: "/playground",
           component: (
             <Suspense fallback={<Spinner />}>
               <PlaygroundPage />
@@ -31,7 +31,7 @@ render(
     />
     <section
       class={() =>
-        `${path() !== "/voby-dev/playground" ? "visible" : "hidden"}`}
+        `${path() !== "/playground" ? "visible" : "hidden"}`}
     >
       <Footer />
     </section>
