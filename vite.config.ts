@@ -4,7 +4,7 @@ import UnocssPlugin from "unocss/vite";
 // import { VitePWA } from "vite-plugin-pwa";
 
 export default defineConfig({
-  base: "/voby-dev/",
+  // base: "/voby-dev/",
   plugins: [
     voby(),
     UnocssPlugin({}),
