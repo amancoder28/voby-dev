@@ -20,7 +20,7 @@
     Cross-Origin-Embedder-Policy = 'require-corp; report-to="default";'
     Cross-Origin-Opener-Policy = 'same-site; report-to="default";'
     Cross-Origin-Resource-Policy = "same-site"
-    Permissions-Policy = "self"
+    Permissions-Policy = "interest-cohort=()"
 
 [[edge_functions]]
   path = "/banner"
