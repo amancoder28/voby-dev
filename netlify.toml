@@ -8,6 +8,13 @@
   to = "/index.html"
   status = 200
 
+[[headers]]
+  for = "/*"
+
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+
 [[edge_functions]]
   path = "/banner"
   function = "banner"
