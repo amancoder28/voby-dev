@@ -7,7 +7,7 @@ export default function Hero() {
     <section>
       <div class="text-center mt-20 md:mt-[18.5vh] text-3xl md:text-7xl font-extrabold mx-3">
         <h1 class="mb-1 md:mb-4">A High Performance</h1>
-        <h1 class="mb-4 md:mb-8 mx-2">Javascript  Framework</h1>
+        <h1 class="mb-4 md:mb-8 mx-2">Javascript Framework</h1>
       </div>
 
       <div class="text-center">
@@ -45,14 +45,9 @@ export default function Hero() {
         id="benefits"
         class={() =>
           `${
-            position()! >= 330 ? "pt-24" : ""
+            position()! >= 330 ? "pt-24" : "scroll-mt-24"
           } lg:my-2 px-0 lg:px-12 flex flex-col md:pt-10`}
-        style="overflow-y: scroll; scroll-behavior: smooth;"
       >
-        {/* <section class="flex-center my-2 font-bold text-3xl">
-          Benefits
-        </section> */}
-
         <section class="grid sm:grid-cols-2 lg:grid-cols-4 py-3 lg:py-0 rounded-lg">
           <For values={strengths}>
             {({ icon, label, description }) => (
