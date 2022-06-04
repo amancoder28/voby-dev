@@ -22,6 +22,12 @@
     Cross-Origin-Resource-Policy = "same-site"
     Permissions-Policy = "interest-cohort=()"
 
+[[headers]]
+  for = "/images/*"
+
+  [headers.values]
+    Cache-Control = "public, max-age=2592000, stale-while-revalidate=2592000"
+
 [[edge_functions]]
-  path = "/banner"
-  function = "banner"
+  path = "/image"
+  function = "image"
