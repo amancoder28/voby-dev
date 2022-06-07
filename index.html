@@ -33,6 +33,10 @@
           "font",
         ).innerHTML = `@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");`;
       });
+
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js');
+      }
     </script>
   </body>
 </html>
