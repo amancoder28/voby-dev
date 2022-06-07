@@ -45,7 +45,7 @@ export default function Hero() {
         id="benefits"
         class={() =>
           `${
-            position()! >= 330 ? "pt-24" : ""
+            position()! >= 330 ? "pt-24" : "scroll-mt-24"
           } lg:my-2 px-0 lg:px-12 flex flex-col md:pt-10`}
       >
         {
