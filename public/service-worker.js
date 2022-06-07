@@ -5,7 +5,7 @@ importScripts(
 const { googleFontsCache, imageCache, pageCache, staticResourceCache } = workbox.recipes;
 const { registerRoute } = workbox.routing;
 const { CacheFirst } = workbox.strategies;
-const { CacheableResponsePlugin } = workbox.cacheable-response;
+const { CacheableResponsePlugin } = workbox.cacheableResponse;
 const { ExpirationPlugin } = workbox.expiration;
 
 pageCache();
