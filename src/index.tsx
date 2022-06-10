@@ -1,5 +1,5 @@
 /* @refresh reload */
-import { $, lazy, render, Suspense, useEffect } from "voby";
+import { lazy, render, Suspense } from "voby";
 
 import "uno.css";
 import "@unocss/reset/tailwind.css";
@@ -29,10 +29,7 @@ render(
         },
       ]}
     />
-    <section
-      class={() =>
-        `${path() !== "/voby-dev/playground" ? "visible" : "hidden"}`}
-    >
+    <section class={() => `${path() !== "/voby-dev/playground" ? "visible" : "hidden"}`}>
       <Footer />
     </section>
   </>,
