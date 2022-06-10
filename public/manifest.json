@@ -4,7 +4,7 @@
   "description": "Voby - A High Performance Javascript Framework",
   "theme_color": "#FFF6DB",
   "display": "standalone",
-  "orientation": "portrait"
+  "orientation": "portrait",
   "start_url": "/?source=pwa",
   "icons": [
     {
