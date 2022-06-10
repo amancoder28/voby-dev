@@ -16,7 +16,9 @@
     "typescript": "^4.6.4",
     "unocss": "^0.34.0",
     "vite": "^2.9.9",
-    "voby-vite": "^1.0.0"
+    "voby-vite": "^1.0.0",
+    "esbuild": "latest",
+    "vite-plugin-pwa": "latest"
   },
   "dependencies": {
     "@amoutonbrady/lz-string": "^0.0.1",
