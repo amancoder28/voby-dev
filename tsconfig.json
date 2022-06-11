@@ -9,7 +9,7 @@
     "esModuleInterop": true,
     "jsx": "preserve",
     "jsxImportSource": "voby",
-    "types": ["vite/client"],
+    "types": ["vite/client", "@types/mdx"],
     "noEmit": true,
     "isolatedModules": true,
     "resolveJsonModule": true,

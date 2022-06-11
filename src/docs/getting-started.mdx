@@ -1,0 +1,114 @@
+---
+title: Getting Started
+description: A guide for how to get started with Voby.
+sort: 0
+---
+
+## Try Voby
+
+By far the easiest way to get started with Voby is to try it online. Our REPL at https://amancoder28.github.io/voby-dev/playground is the perfect way to try out ideas.
+
+Alternatively, you can use our [CLI](https://github.com/vobyjs/voby-app-cli) by running these commands in your terminal:
+
+```sh
+> npm init voby-app my-app
+> cd my-app
+> npm i # or yarn or pnpm
+> npm run dev # or yarn or pnpm
+```
+
+Or by using Degit:
+
+```sh
+> npx degit vobyjs/voby-app-cli/template my-app
+> cd my-app
+> npm i # or yarn or pnpm
+> npm run dev # or yarn or pnpm
+```
+
+For TypeScript, set your `tsconfig.json` to handle Voby's JSX as follows
+(see the [TypeScript guide](https://amancoder28.github.io/voby-dev/docs/typescript)
+for more details):
+
+```json
+"compilerOptions": {
+  "jsx": "preserve",
+  "jsxImportSource": "voby-js",
+}
+```
+
+## Learn Voby
+
+Voby is all about small composable pieces that serve as building blocks for applications. These pieces are mostly functions which make up many shallow top-level APIs. Fortunately, you won't need to know about most of them to get started.
+
+The two main types of building blocks you have at your disposal are Components and Reactive Primitives.
+
+Components are functions that accept a props object and return JSX elements including native DOM elements and other components. They can be expressed as JSX Elements in PascalCase:
+
+```jsx
+function MyComponent(props) {
+  return <div>Hello {props.name}</div>;
+}
+
+<MyComponent name="Voby" />;
+```
+
+Components are lightweight in that they are not stateful themselves and have no instances. Instead, they serve as factory functions for DOM elements and reactive primitives.
+
+Voby's fine-grained observable-based reactivity is built on three core primitives: Observables, Memos, and Effects. Together, they form an auto-tracking synchronization engine that ensures your view stays up to date. Reactive computations take the form of function-wrapped expressions that execute synchronously.
+
+```js
+const [first, setFirst] = $("JSON");
+const [last, setLast] = $("Bourne");
+
+useEffect(() => console.log(`${first()} ${last()}`));
+```
+
+You can learn more about [Voby's Reactivity](/guides/reactivity) and [Voby's Rendering](/guides/rendering).
+
+## Think Voby
+
+Voby's design carries several opinions on what principles and values help us best build websites and applications. It is easier to learn and use Solid when you are aware of the philosophy behind it.
+
+### 1. Declarative Data
+
+Declarative data is the practice of tying the description of data’s behavior to its declaration. This allows for easy composition by packaging all aspects of data’s behavior in a single place.
+
+### 2. Vanishing Components
+
+It's hard enough to structure your components without taking updates into consideration. Solid updates are completely independent of the components. Component functions are called once and then cease to exist. Components exist to organize your code and not much else.
+
+### 3. Read/Write segregation
+
+Precise control and predictability make for better systems. We don't need true immutability to enforce unidirectional flow, just the ability to make the conscious decision which consumers may write and which may not.
+
+### 4. Simple is better than easy
+
+A lesson that comes hard for fine-grained reactivity. Explicit and consistent conventions even if they require more effort are worth it. The aim is to provide minimal tools to serve as the basis to build upon.
+
+## Buildless options
+
+If you need or prefer to use Voby in non-compiled environments such as plain HTML files, https://codepen.io, etc, you can use [` html`` ` Tagged Template Literals](https://github.com/vobyjs/voby/tree/master/src/methods/html.ts) or [HyperScript `h()` functions](https://github.com/vobyjs/voby/tree/master/src/methods/h.ts) in plain JavaScript instead of Voby's JSX syntax.
+
+You can run them straight from the browser using [Skypack](https://www.skypack.dev/), for example:
+
+```html
+<html>
+  <body>
+    <script type="module">
+      import { render, html, useCleanup, $ } from "https://cdn.skypack.dev/voby";
+
+      const App = () => {
+        const count = $(0);
+        const timer = setInterval(() => count(count() + 1), 1000);
+
+        useCleanup(() => clearInterval(timer));
+
+        return html`<div>${count}</div>`;
+      };
+
+      render(App, document.body);
+    </script>
+  </body>
+</html>
+```

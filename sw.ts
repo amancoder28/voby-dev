@@ -1,6 +1,5 @@
-// import { precacheAndRoute } from "workbox-precaching";
 import { registerRoute } from "workbox-routing";
-import { CacheFirst } from "workbox-strategies";
+import { CacheFirst, NetworkFirst } from "workbox-strategies";
 
 import { CacheableResponsePlugin } from "workbox-cacheable-response";
 import { ExpirationPlugin } from "workbox-expiration";
@@ -12,21 +11,19 @@ const maxEntries = 30;
 
 import { googleFontsCache, imageCache, pageCache, staticResourceCache } from "workbox-recipes";
 
-declare let self: ServiceWorkerGlobalScope;
-
 pageCache();
 googleFontsCache();
 imageCache();
 staticResourceCache();
 
 registerRoute(
-  new RegExp("https://amancoder28.github.io/voby-dev/.*\\.(wasm|ttf|woff|woff2)"),
+  new RegExp("http://localhost:5000/voby-dev/.*\\.(wasm|ttf|woff|woff2)"),
   new CacheFirst({ cacheName: "big-assets-cache" }),
 );
 
 registerRoute(
-  ({ url }) => url.origin === "https://unpkg.com",
-  new CacheFirst({
+  ({ url }) => url.origin === "https://unpkg.com/",
+  new NetworkFirst({
     cacheName: UnpkgCache,
     plugins: [
       new CacheableResponsePlugin({
@@ -41,8 +38,8 @@ registerRoute(
 );
 
 registerRoute(
-  ({ url }) => url.origin === "https://cdn.skypack.dev",
-  new CacheFirst({
+  ({ url }) => url.origin === "https://cdn.skypack.dev/",
+  new NetworkFirst({
     cacheName: SkypackCache,
     plugins: [
       new CacheableResponsePlugin({
@@ -55,5 +52,3 @@ registerRoute(
     ],
   }),
 );
-
-// precacheAndRoute(self.__WB_MANIFEST);
