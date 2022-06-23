@@ -17,12 +17,12 @@ imageCache();
 staticResourceCache();
 
 registerRoute(
-  new RegExp("http://localhost:5000/voby-dev/.*\\.(wasm|ttf|woff|woff2)"),
+  new RegExp("https://amancoder28.github.io/voby-dev/.*\\.(wasm|ttf|woff|woff2)"),
   new CacheFirst({ cacheName: "big-assets-cache" }),
 );
 
 registerRoute(
-  ({ url }) => url.origin === "https://unpkg.com/",
+  ({ url }) => url.origin === "https://unpkg.com",
   new NetworkFirst({
     cacheName: UnpkgCache,
     plugins: [
@@ -38,7 +38,7 @@ registerRoute(
 );
 
 registerRoute(
-  ({ url }) => url.origin === "https://cdn.skypack.dev/",
+  ({ url }) => url.origin === "https://cdn.skypack.dev",
   new NetworkFirst({
     cacheName: SkypackCache,
     plugins: [
