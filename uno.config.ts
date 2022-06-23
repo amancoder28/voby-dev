@@ -1,4 +1,4 @@
-import { defineConfig } from "unocss";
+import { defineConfig, presetTypography, presetUno } from "unocss";
 import transformerVariantGroup from "@unocss/transformer-variant-group";
 
 export default defineConfig({
@@ -16,5 +16,6 @@ export default defineConfig({
     footer: "bottom-0 relative",
     "flex-center": "flex items-center justify-center",
   },
+  presets: [presetUno(), presetTypography()],
   transformers: [transformerVariantGroup()],
 });
