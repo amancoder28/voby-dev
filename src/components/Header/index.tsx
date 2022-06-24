@@ -1,7 +1,9 @@
 import { $, Ternary } from "voby";
-import { path, RouterLink } from "../../router";
+import { useResolvedPath, Link } from "voby-router";
 import Logo from "../Logo";
 import Links from "./Links";
+
+const path = useResolvedPath(() => new URL(location.href).pathname);
 
 export const openMenu = $(false);
 
@@ -15,10 +17,10 @@ export default function Header() {
       }
     >
       <div class="md:pl-2 mt-3 md:pr-10 flex items-center flex-wrap justify-between">
-        <RouterLink href="/voby-dev/" class="pl-3 space-x-2 md:space-x-4 flex items-center justify-between">
+        <Link href="/voby-dev/" class="pl-3 space-x-2 md:space-x-4 flex items-center justify-between">
           <Logo />
           <span class="text-xl font-semibold whitespace-nowrap dark:text-white">Voby</span>
-        </RouterLink>
+        </Link>
         <button
           type="button"
           class="mr-4 inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"

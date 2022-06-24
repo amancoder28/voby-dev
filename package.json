@@ -30,7 +30,8 @@
     "monaco-editor": "^0.33.0",
     "prettier": "^2.6.2",
     "regexparam": "^2.0.0",
-    "voby": "latest"
+    "voby": "latest",
+    "voby-router": "^0.1.0-beta.2"
   },
   "private": true
 }

@@ -1,6 +1,5 @@
 import { openMenu } from ".";
-import { RouterLink } from "../../router";
-
+import { Link } from "voby-router";
 
 export default function Links() {
   return (
@@ -30,12 +29,12 @@ export default function Links() {
           </a>
         </li>
         <li class="px-8 md:px-4" onClick={() => openMenu(false)}>
-          <RouterLink
+          <Link
             href="/voby-dev/playground"
             class="block text-base font-bold font-medium py-3 pr-4 pl-3 text-gray-700 border-b border-gray-200 md:hover:bg-transparent md:border-0 md:hover:text-emerald-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
           >
             Playground
-          </RouterLink>
+          </Link>
         </li>
         <li class="px-8 md:px-4">
           <a
