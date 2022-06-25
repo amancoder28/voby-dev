@@ -21,7 +21,6 @@
     "typescript": "^4.6.4",
     "unocss": "^0.34.0",
     "vite": "^2.9.9",
-    "vite-plugin-pwa": "latest",
     "voby-vite": "^1.0.0"
   },
   "dependencies": {

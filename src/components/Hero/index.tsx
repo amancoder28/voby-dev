@@ -1,5 +1,5 @@
 import { For } from "voby";
-// import Sections from "./sections";
+import Sections from "./sections";
 import { strengths } from "./strengths";
 
 export default function Hero() {
@@ -12,7 +12,8 @@ export default function Hero() {
 
       <div class="text-center">
         <p class="font-normal text-gray-9 text-lg md:text-2xl mx-5">
-          A fine grained observable based reactivity for building rich web applications.
+          A fine grained observable based reactivity for building rich web
+          applications.
         </p>
       </div>
 
@@ -20,12 +21,18 @@ export default function Hero() {
         <button class="button green mx-1 md:mx-2">Why Voby</button>
         <button class="button gray text-center inline-flex items-center mx-1 md:mx-2">
           Get Started
-          <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            class="w-5 h-5 ml-2 -mr-1"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <path
               fill-rule="evenodd"
               d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
               clip-rule="evenodd"
-            ></path>
+            >
+            </path>
           </svg>
         </button>
 
@@ -35,7 +42,11 @@ export default function Hero() {
       {/* Needs to Have a z-index or Some kind of a thing like that to be on top */}
       {/* <Sections /> */}
 
-      <div id="benefits" class={() => `scroll-mt-24 lg:my-2 px-0 lg:px-12 flex flex-col md:pt-10`}>
+      <div
+        id="benefits"
+        class={() =>
+          `scroll-mt-24 lg:my-2 px-0 lg:px-12 flex flex-col md:pt-10`}
+      >
         <section class="-z-40 grid sm:grid-cols-2 lg:grid-cols-4 py-3 lg:py-0 rounded-lg">
           <For values={strengths}>
             {({ icon, label, description }) => (

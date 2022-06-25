@@ -1,7 +1,7 @@
 import { useResolvedPath, useRoutes } from "voby-router";
 import { routes } from "./router";
 
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import Header from "./components/Header";
 
 export default function App() {
@@ -12,9 +12,15 @@ export default function App() {
     <>
       <Header />
       <Routes />
-      <section class={() => `${path() !== "/voby-dev/playground" ? "visible" : "hidden"}`}>
+      {
+        /* <section
+        class={() =>
+          `${path() !== "/voby-dev/playground" ? "visible" : "hidden"}`}
+      >
         <Footer />
-      </section>
+        </section>
+        */
+      }
     </>
   );
 }
